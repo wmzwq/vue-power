@@ -1,6 +1,127 @@
-html,body,#app{
-height: 100%;
-margin: 0;
-padding: 0;
-width: 100%;
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+  background-color: #FAFAFA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.flex3 {
+  display: flex;
+  flex-flow: row wrap;
+  align-content:space-around;
+}
+
+.pr {
+  position: relative;
+}
+
+.fl {
+  float: left;
+}
+.ib{
+  display:inline-block
+}
+.fr {
+  float: right;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/*合并间距*/
+table,
+table th,
+table td {
+  border: 1px solid #ddd;
+}
+
+/*表格带线框,6像素的间距*/
+table th,
+table td {
+  padding: 6px;
+}
+
+/*单元格6像素的间距*/
+.bg {
+  background: rgba(241, 241, 241, 1);
+}
+
+.title {
+  height: 17px;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(78, 78, 78, 1);
+  line-height: 17px;
+}
+
+.state {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(78, 78, 78, 1);
+}
+
+.width {
+  width: 335px;
+}
+
+.mar {
+  margin: 15px 20px 0;
+}
+
+.van-icon-arrow-left::before {
+  color: #3FB7AF;
+  font-size: 24px;
+}
+
+.van-nav-bar__title {
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(3, 3, 3, 1);
+}
+
+.error {
+  background-color: red;
+}
+.success{
+  background-color: #4FC08D;
+}
+.warning{
+  background-color: #EAA268;
+}
+.van-toast__icon {
+  font-size: 26px;
+}
+
+.van-toast__text {
+  margin-top: 0px;
+}
+
+.van-toast {
+  margin-top: 0px;
+  width: 83px;
+  max-width: 70%;
+  min-height: 60px;
+  font-size: 12px;
+}
+.iconfont {
+  font-size: 24px !important;
+}
+.van-dropdown-item {
+  width: 335px;
+  margin: 0 20px;
 }

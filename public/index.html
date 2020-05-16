@@ -1,21 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- 在 head 标签中添加 meta 标签，并设置 viewport-fit=cover 值 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <!-- 开启 safe-area-inset-bottom 属性 -->
     <van-number-keyboard safe-area-inset-bottom />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="../src/assets/css/style.css" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <script
+      type="text/javascript"
+      src="http://api.map.baidu.com/api?v=2.0&ak=BUUWGn8LdqbjlQG9Rm37h2piIdXTOZBW"
+    ></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
+
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script type="text/javascript">
+      mui.init({
+        keyEventBind: {
+          backbutton: true, //关闭back按键监听
+        },
+      });
+      //首页返回键处理
+      // 处理逻辑： 1s内，连续两次按返回键，则退出应用；
+      var first = null;
+      mui.back = function() {
+        // 首次按键， 提示 再按一次退出应用
+        if (!first) {
+          first = new Date().getTime(); //记录第一次按下回退键的时间
+          mui.toast("再按一次退出应用");
+          history.go(-1); // 回退到上一页
+          setTimeout(function() {
+            //1s 后清除
+            first = null;
+          }, 1000);
+        } else {
+          if (new Date().getTime() - first < 1000) {
+            //如果两次按下的时间小于1s
+            plus.runtime.quit(); //那么就退出app
+          }
+        }
+      };
+      mui.plusReady(function() {
+        // 监听点击消息事件
+        plus.push.addEventListener(
+          "click",
+          function(msg) {
+            // 判断是从本地创建还是离线推送的消息
+            switch (msg.payload) {
+              case "LocalMSG":
+                mui.toast("点击本地创建消息启动：");
+                break;
+              default:
+                mui.toast("点击离线推送消息启动：");
+                break;
+            }
+            // 提示点击的内容
+            plus.ui.alert(msg.content);
+          },
+          false
+        );
+        // 监听在线消息事件
+        plus.push.addEventListener(
+          "receive",
+          function(msg) {
+            if (msg.aps) {
+              // Apple APNS message
+              mui.toast("接收到在线APNS消息：");
+            } else {
+              mui.toast("接收到在线透传消息：");
+            }
+          },
+          false
+        );
+      });
+
+      // //获取推送通知
+      // plus.push.addEventListener(
+      //   "receive",
+      //   function(msg) {
+      //     alert("接收到的透传推送 " + JSON.stringify(msg));
+      //     if (plus.os.name == "iOS") {
+      //       switch (msg.payload) {
+      //         case "LocalMSG":
+      //           alert("本地创建消息的 " + JSON.stringify(msg));
+      //           break;
+      //         default:
+      //           //测试本地推送
+      //           createLocalPushMsg(msg);
+      //           break;
+      //       }
+      //     }
+      //   },
+      //   false
+      // );
+      // //点击推送进来
+      // plus.push.addEventListener(
+      //   "click",
+      //   function(msg) {
+      //     // 判断是从本地创建还是离线推送的消息
+      //     alert("点击处理消息 " + JSON.stringify(msg));
+      //   },
+      //   false
+      // );
+      // // 创建本地消息
+      // function createLocalPushMsg(msg) {
+      //   var options = { cover: false };
+      //   // eslint-disable-next-line no-undef
+      //   plus.push.createMessage(msg.content, "LocalMSG", options);
+      //   // eslint-disable-next-line no-undef
+      //   if (plus.os.name === "iOS") {
+      //     // eslint-disable-next-line no-undef
+      //     outLine(
+      //       '*如果无法创建消息，请到"设置"->"通知"中配置应用在通知中心显示!'
+      //     );
+      //   }
+      // }
+    </script>
   </body>
 </html>

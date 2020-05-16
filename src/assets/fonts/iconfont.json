@@ -1,0 +1,184 @@
+{
+  "id": "1739307",
+  "name": "home",
+  "font_family": "iconfont",
+  "css_prefix_text": "home",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14499635",
+      "name": "筛选",
+      "font_class": "shaixuan",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "609719",
+      "name": "信息",
+      "font_class": "xinxiinformation38",
+      "unicode": "e758",
+      "unicode_decimal": 59224
+    },
+    {
+      "icon_id": "14016543",
+      "name": "Shape",
+      "font_class": "Shape",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "13983014",
+      "name": "Profile",
+      "font_class": "Profile",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "13978651",
+      "name": "Group 10",
+      "font_class": "Group",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "13978652",
+      "name": "Group 3",
+      "font_class": "Group1",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "13973382",
+      "name": "Options",
+      "font_class": "Options",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "13955516",
+      "name": "资源 20(1)",
+      "font_class": "ziyuan1",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "13955517",
+      "name": "资源 21(1)",
+      "font_class": "ziyuan3",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "13954857",
+      "name": "资源 23",
+      "font_class": "ziyuan5",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "13954858",
+      "name": "资源 22",
+      "font_class": "ziyuan6",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "13954549",
+      "name": "资源 19",
+      "font_class": "ziyuan2",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "13954551",
+      "name": "资源 18",
+      "font_class": "ziyuan4",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "13952092",
+      "name": "故障管理 (1)",
+      "font_class": "guzhangguanli",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "13951334",
+      "name": "scada",
+      "font_class": "scada",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "13951335",
+      "name": "GIS定位",
+      "font_class": "GISdingwei",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "13951337",
+      "name": "负荷",
+      "font_class": "fuhe",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "13951338",
+      "name": "电量电费",
+      "font_class": "dianliangdianfei",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "13951340",
+      "name": "功率因数 ",
+      "font_class": "gongshuaiyinshu",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "13951341",
+      "name": "抢修任务",
+      "font_class": "qiangxiurenwu",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "13951342",
+      "name": "电费",
+      "font_class": "dianfei",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "13951345",
+      "name": "在线离线",
+      "font_class": "zaixianlixian",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "13951346",
+      "name": "视频监控",
+      "font_class": "shipinjiankong",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "13951347",
+      "name": "资源 13(1)",
+      "font_class": "ziyuan",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "13930232",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
