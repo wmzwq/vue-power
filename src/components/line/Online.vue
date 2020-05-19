@@ -29,24 +29,24 @@
       </div>
     </div>
      <div class="flex" :key="index" v-for="(item, index) in list">
-      <div class="summary" @click="goEquipment(item[4])">
-        <div class="disposal_t">{{item[3]}}</div>
+      <div class="summary" @click="goEquipment(item.BelongCompanyId)">
+        <div class="disposal_t">{{item.CustomerName}}</div>
         <div :id="`radar${index}`" class="echartClass"  @click.stop=""></div>
         <div>
           <div>
             <div class="disposal_y"></div>
             <div class="disposal_f">在线设备</div>
-            <div class="disposal_s">{{item[0]}}</div>
+            <div class="disposal_s">{{item.SingleOnLineCount}}</div>
           </div>
           <div>
             <div class="disposal_y disposal_c"></div>
             <div class="disposal_f disposal_h">离线设备</div>
-            <div class="disposal_s disposal_h">{{item[1]}}</div>
+            <div class="disposal_s disposal_h">{{item.SingleOffLineCount}}</div>
           </div>
           <div>
             <div class="disposal_y disposal_l"></div>
             <div class="disposal_f disposal_h2">在线率</div>
-            <div class="disposal_s disposal_h2">{{item[2]}}</div>
+            <div class="disposal_s disposal_h2">{{item.SingleRate+'%'}}</div>
           </div>
         </div>
       </div>
@@ -249,8 +249,8 @@ export default {
                       }
                     }
                   },
-                  data: [{ value: item[0], name: '在线设备' },
-                    { value: item[1], name: '离线设备' }]
+                  data: [{ value: item.SingleOnLineCount, name: '在线设备' },
+                    { value: item.SingleOffLineCount, name: '离线设备' }]
                 }
               ]
             })

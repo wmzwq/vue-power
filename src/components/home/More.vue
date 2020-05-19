@@ -16,6 +16,8 @@
         v-for="(v, i) in myApplication"
         :key="i"
         v-longtap="vueTouch"
+         v-fb
+        @click.stop="jump(v.routing)"
         v-dragging="{ item: v, list: myApplication, group: 'v' }"
       >
         <van-icon :class="v.icon" :color="v.color"/>
@@ -32,6 +34,8 @@
         <van-grid-item
           v-for="(v, i) in item.gird"
           :key="i"
+          v-fb
+          @click.stop="jump(v.routing)"
           v-longtap="vueTouch"
         >
           <van-icon :class="v.icon" :color="v.color" />
@@ -130,6 +134,24 @@ export default {
               text: '功率因数',
               color: '#67AFEB',
               routing: '/factor'
+            },
+            {
+              icon: 'iconfont homedianliangdianfei',
+              text: '电量电费',
+              color: '#67AFEB',
+              routing: '/energyCharge'
+            },
+            {
+              icon: 'iconfont homescada',
+              text: 'SCADA',
+              color: '#67AFEB',
+              routing: '/scada'
+            },
+            {
+              icon: 'iconfont homeguzhangguanli',
+              text: '故障管理',
+              color: '#67AFEB',
+              routing: '/management'
             }
           ]
         },
@@ -142,6 +164,18 @@ export default {
               text: 'GIS定位',
               color: '#EAA364',
               routing: '/gis'
+            },
+            {
+              icon: 'iconfont homezaixianlixian',
+              text: '在线离线',
+              color: '#EAA364',
+              routing: '/online'
+            },
+            {
+              icon: 'iconfont homeshipinjiankong',
+              text: '视频监控',
+              color: '#EAA364',
+              routing: '/monitoring'
             }
           ]
         },
@@ -154,6 +188,18 @@ export default {
               text: '缺陷任务',
               color: '#3DB5AF',
               routing: '/defectManagement'
+            },
+            {
+              icon: 'iconfont homeqiangxiurenwu',
+              text: '抢修任务',
+              color: '#3DB5AF',
+              routing: '/repairTask'
+            },
+            {
+              icon: 'iconfont homeziyuan1',
+              text: '巡检任务',
+              color: '#3DB5AF',
+              routing: '/tasks'
             }
           ]
         },
@@ -195,6 +241,9 @@ export default {
     onClickLeft () {
       this.$router.go(-1) // 返回上一层
     },
+    jump (routing) {
+      this.$router.push(routing)
+    },
     vueTouch () {
       this.flag = false
     },
@@ -211,13 +260,11 @@ export default {
     deleteApplication (i, id, item) {
       if (!this.flag) {
         this.myApplication.splice(i, 1)
-        this.application[id].gird.push({ icon: item.icon, text: item.text, color: item.color, routing: item.routing })
       }
     },
     addApplication (i, id, item) {
       if (!this.flag) {
         if (this.myApplication.length < 7) {
-          this.application[id].gird.splice(i, 1)
           this.myApplication.push({ id: id, icon: item.icon, text: item.text, color: item.color, routing: item.routing })
         } else {
           this.$toast({

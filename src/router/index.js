@@ -48,7 +48,7 @@ const PeopleDetails = () => import('../components/personnel/PeopleDetails.vue')
 const FaultReport = () => import('../components/refer/FaultReport.vue')
 const DefectPeformed = () => import('../components/defects/DefectPeformed.vue')
 const DefectHistory = () => import('../components/defects/DefectHistory.vue')
-
+const MessageDetail = () => import('../components/home/MessageDetail.vue')
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', component: Login },
@@ -104,7 +104,8 @@ const routes = [
   { path: '/peopleDetails', component: PeopleDetails },
   { path: '/defectPeformed', component: DefectPeformed },
   { path: '/defectHistory', component: DefectHistory },
-  { path: '/faultReport', component: FaultReport }
+  { path: '/faultReport', component: FaultReport },
+  { path: '/messageDetail', component: MessageDetail }
 ]
 
 Vue.use(VueRouter)

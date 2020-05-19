@@ -190,7 +190,6 @@ export default {
   },
   methods: {
     jump (routing) {
-      console.log(routing)
       this.$router.push(routing)
     },
     goMesssage () {

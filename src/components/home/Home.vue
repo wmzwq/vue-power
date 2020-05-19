@@ -1,15 +1,14 @@
 <template>
-  <div class="">
+  <div class>
     <router-view />
     <van-tabbar v-model="active" route class="footer">
       <van-tabbar-item name="home" replace to="/main">
         <van-icon class="iconfont homeshouye" />
-        <p class="text">我的</p>
+        <p class="text">首页</p>
       </van-tabbar-item>
       <van-tabbar-item name="search" v-fb @click="goCamera">
         <div class="add">
-          <div class="cross"></div>
-          <div class="vertical"></div>
+          <van-icon class="iconfont homesaoma addImg" />
         </div>
       </van-tabbar-item>
       <van-tabbar-item name="friends" replace to="/my">
@@ -46,17 +45,19 @@ export default {
 .van-tabbar-item--active {
   color: #41b6b1;
 }
-@supports (bottom: env(safe-area-inset-bottom)){
-    body,
-    .footer{
-        padding-bottom: constant(safe-area-inset-bottom);
-        padding-bottom: env(safe-area-inset-bottom);
-    }
+@supports (bottom: env(safe-area-inset-bottom)) {
+  body,
+  .footer {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 .text {
   font-size: 10px;
   font-weight: 400;
   color: rgba(112, 112, 112, 1);
+  text-align: center;
+  margin-top: 4px;
 }
 .add {
   position: relative;
@@ -67,22 +68,12 @@ export default {
   z-index: 999;
   margin-bottom: 34px;
 }
-.cross {
+.addImg {
   position: absolute;
-  width: 18px;
-  height: 3px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 2px;
-  top: 22px;
-  left: 15px;
-}
-.vertical {
-  position: absolute;
-  width: 3px;
-  height: 18px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 2px;
-  top: 15px;
-  left: 23px;
+  width:24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 </style>

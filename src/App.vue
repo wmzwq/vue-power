@@ -63,7 +63,7 @@ export default {
     '$route' (to, from) {
       const toDepth = to.matched.length
       const fromDepth = from.matched.length
-      this.transitionName = toDepth < fromDepth ? 'van-slide-right' : 'van-slide-left'
+      this.transitionName = toDepth < fromDepth ? 'van-slide-left' : ' van-slide-right'
     }
   },
   methods: {

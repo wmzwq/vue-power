@@ -7,11 +7,8 @@
           name="username"
           placeholder="用户名"
           :rules="[{ required: true, message: '请填写用户名' }]"
-          ><van-icon
-            class="iconfont homeGroup1"
-            slot="left-icon"
-            color="#46C0A5"
-          />
+        >
+          <van-icon class="iconfont homeGroup1" slot="left-icon" color="#46C0A5" />
         </van-field>
         <van-field
           style="margin-top:30px"
@@ -20,11 +17,10 @@
           name="password"
           placeholder="密码"
           :rules="[{ required: true, message: '请填写密码' }]"
-          ><van-icon class="iconfont homeGroup" slot="left-icon" color="#46C0A5"
-        /></van-field>
-        <div class="btn" @click="onSubmit" v-fb>
-          登录
-        </div>
+        >
+          <van-icon class="iconfont homeGroup" slot="left-icon" color="#46C0A5" />
+        </van-field>
+        <div class="btn" @click="onSubmit" v-fb>登录</div>
       </van-form>
     </div>
   </div>
@@ -35,8 +31,8 @@ export default {
   components: {},
   data () {
     return {
-      username: '15200005555',
-      password: '666666'
+      username: '',
+      password: ''
     }
   },
   methods: {
@@ -69,7 +65,8 @@ export default {
               duration: 1000
             })
           }
-        }).catch(error => {
+        })
+        .catch(error => {
           console.log(error.message)
           this.show = false
           this.$toast({
@@ -82,6 +79,17 @@ export default {
 }
 </script>
 <style scoped lang="less">
+.van-field__left-icon .van-icon,
+.van-field__right-icon .van-icon {
+  top: 50%;
+  transform: translateY(-50%);
+}
+/deep/.van-field__body {
+  position: absolute;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .login_container {
   width: 335px;
   height: 306px;

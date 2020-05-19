@@ -6,23 +6,23 @@
         <van-dropdown-item v-model="value" :options="option" @change="change"/>
       </van-dropdown-menu>
     </div>
-    <div class="flex2 mar" @click="goList">
-      <div class="fault">
+    <div class="flex2 mar" >
+      <div class="fault" @click="goList('5')">
         <p>{{ repair }}</p>
         <img src="../../assets/img/ywc.png" alt />
         <span>待抢修</span>
       </div>
-      <div class="fault">
+      <div class="fault" @click="goList('6')">
         <p>{{ audit }}</p>
         <img src="../../assets/img/ywc.png" alt />
         <span>待审核</span>
       </div>
-      <div class="fault">
+      <div class="fault" @click="goList('7')">
         <p>{{ withinTheTimeLimit }}</p>
         <img src="../../assets/img/ywc.png" alt />
         <span>逾期</span>
       </div>
-      <div class="fault">
+      <div class="fault" @click="goList('8')">
         <p>{{ monthToComplete }}</p>
         <img src="../../assets/img/ywc.png" alt />
         <span>本月完成</span>
@@ -217,11 +217,12 @@ export default {
     onClickLeft () {
       this.$router.go(-1)
     },
-    goList () {
+    goList (value) {
       this.$router.push({
         path: '/repairList',
         query: {
-          id: this.value
+          id: this.value,
+          value: value
         }
       })
     },
