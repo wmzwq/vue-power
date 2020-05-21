@@ -1,7 +1,7 @@
 <template>
   <div class v-cloak>
     <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-      <div class="header">
+      <div class="header" :style ="note">
         <div class="header_title">
           <van-icon name="friends-o" class="fl" />
           <div class="fl">
@@ -115,6 +115,14 @@ export default {
   },
   data () {
     return {
+      note: {
+        background: 'url(' + require('../../assets/img/main.png') + ') no-repeat',
+        width: '100%',
+        height: '100%',
+        backgroundSize: '100% 100%'
+        // backgroundRepeat: 'no-repeat'
+        // backgroundPosition: 'center'
+      },
       isLoading: false,
       value: '',
       securityNumber: 0,
@@ -300,11 +308,7 @@ export default {
 .header {
   width: 100%;
   height: 360px;
-  background: linear-gradient(
-    282deg,
-    rgba(121, 175, 241, 1) 0%,
-    rgba(86, 123, 207, 1) 100%
-  );
+  background-image: url('../../assets/img/main.png') no-repeat;
   overflow: hidden;
 }
 .header_title {
@@ -363,7 +367,7 @@ export default {
 .flex2 {
   display: flex;
   justify-content: space-around;
-  margin-top: 33px;
+  margin: 33px 0;
 }
 .point {
   display: inline-block;
@@ -417,7 +421,7 @@ export default {
   transform: translateY(-50%);
 }
 .info{
-  position: absolute;
+    position: absolute;
     top: 50%;
     right: 30px;
     box-sizing: border-box;
@@ -429,12 +433,15 @@ export default {
     font-family: PingFang SC,Helvetica Neue,Arial,sans-serif;
     line-height: 14px;
     text-align: center;
-    background-color: #ee0a24;
+    background-color: #FC4339;
     border: 1px solid #fff;
     border-radius: 16px;
     -webkit-transform: translate(50%,-50%);
     transform: translate(50%,-50%);
     -webkit-transform-origin: 100%;
     transform-origin: 100%;
+}
+/deep/.van-info{
+  background-color:#FC4339;
 }
 </style>

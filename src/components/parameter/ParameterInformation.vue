@@ -29,7 +29,8 @@
       <div class="block">
         <div class="middle_h">
           <span>{{v.F_FullName}}</span>
-          <div class="middle_btn">{{v.F_PowerType}}</div>
+          <div class="middle_btn" v-if="v.F_PowerType!==''&&v.F_PowerType!==null">
+            <div>{{v.F_PowerType}}</div></div>
         </div>
         <div class="line"></div>
         <div class="flex2">
@@ -193,6 +194,10 @@ export default {
         color: #47b594;
         text-align: center;
         line-height: 22px;
+        div{
+          display: inline-block;
+          margin: 0 10px;
+        }
       }
     }
     .line {

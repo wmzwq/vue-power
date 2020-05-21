@@ -1,8 +1,6 @@
 <template>
   <div id="app" v-cloak>
-    <transition :name="transitionName">
-      <router-view v-if="isRouterAlive"></router-view>
-    </transition>
+      <router-view v-if="isRouterAlive" v-transition class="viewStyle"></router-view>
   </div>
 </template>
 
@@ -18,7 +16,6 @@ export default {
   data () {
     return {
       isRouterAlive: true,
-      transitionName: 'van-slide-right',
       checked1: false,
       checked: false,
       timer: '',
@@ -37,9 +34,7 @@ export default {
     if (localStorage.getItem('checked') === 'true') {
       this.checked = true
       const { data: res } = await this.$http
-        .post(
-          'UserAppInfo/GetPageListAPP'
-        )
+        .post('UserAppInfo/GetPageListAPP')
         .catch(error => {
           console.log(error.message)
           this.$toast({
@@ -59,13 +54,6 @@ export default {
       console.log(res)
     }
   },
-  watch: {
-    '$route' (to, from) {
-      const toDepth = to.matched.length
-      const fromDepth = from.matched.length
-      this.transitionName = toDepth < fromDepth ? 'van-slide-left' : ' van-slide-right'
-    }
-  },
   methods: {
     reload () {
       this.isRouterAlive = false
@@ -75,7 +63,7 @@ export default {
     },
     getLocation () {
       var geolocation = new BMap.Geolocation()
-      geolocation.getCurrentPosition((r) => {
+      geolocation.getCurrentPosition(r => {
         // eslint-disable-next-line no-unused-vars
         var map = new BMap.Map('')
         var pointA = new BMap.Point(
@@ -86,7 +74,8 @@ export default {
         var pointArr = []
         pointArr.push(ggPoint)
         var convertor = new BMap.Convertor()
-        convertor.translate(pointArr, 1, 5, async data => { // 回调函数
+        convertor.translate(pointArr, 1, 5, async data => {
+          // 回调函数
           if (data.status === 0) {
             console.log(data)
             var MaintenanceMap = data.points[0].lng + ',' + data.points[0].lat
@@ -94,7 +83,10 @@ export default {
               .post(
                 'MaintenanceMapTrack/SaveForm',
                 this.$qs.stringify({
-                  data: "{\"strEntity\":\"{'F_MaintenanceMap':'" + MaintenanceMap + "'}\"}"
+                  data:
+                    "{\"strEntity\":\"{'F_MaintenanceMap':'" +
+                    MaintenanceMap +
+                    "'}\"}"
                 })
               )
               .catch(error => {
@@ -116,7 +108,8 @@ export default {
         })
       })
     },
-    initWebSocket () { // 初始化weosocket
+    initWebSocket () {
+      // 初始化weosocket
       const wsuri = 'ws://122.228.89.215:8182/echo'
       this.websock = new WebSocket(wsuri)
       this.websock.onmessage = this.websocketonmessage
@@ -124,24 +117,35 @@ export default {
       this.websock.onerror = this.websocketonerror
       this.websock.onclose = this.websocketclose
     },
-    websocketonopen () { // 连接建立之后执行send方法发送数据
+    websocketonopen () {
+      // 连接建立之后执行send方法发送数据
       console.log('websocketonopen')
-      var senddata = '{"Cmd":"powerregister","UserId":"' + this.F_UserId + '","Type":"alarmplus,repair"}'
+      var senddata =
+        '{"Cmd":"powerregister","UserId":"' +
+        this.F_UserId +
+        '","Type":"alarmplus,repair"}'
       this.websocketsend(senddata)
     },
-    websocketonerror () { // 连接建立失败重连
+    websocketonerror () {
+      // 连接建立失败重连
       this.initWebSocket()
     },
-    websocketonmessage (e) { // 数据接收
+    websocketonmessage (e) {
+      // 数据接收
       const redata = JSON.parse(e.data)
-      var msg = { title: redata.Message.HardwareInfo.F_CustomName, content: redata.Message.Talarminformation }
+      var msg = {
+        title: redata.Message.HardwareInfo.F_CustomName,
+        content: redata.Message.Talarminformation
+      }
       this.createLocalPushMsg(msg)
       console.log(redata)
     },
-    websocketsend (Data) { // 数据发送
+    websocketsend (Data) {
+      // 数据发送
       this.websock.send(Data)
     },
-    websocketclose (e) { // 关闭
+    websocketclose (e) {
+      // 关闭
       console.log('断开连接', e)
     },
     // 创建本地消息
@@ -164,5 +168,9 @@ export default {
 <style scope lang="less">
 [v-cloak] {
   display: none !important;
+}
+.viewStyle{
+  min-height:100%;
+   min-width:100%;
 }
 </style>

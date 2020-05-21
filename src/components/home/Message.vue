@@ -225,7 +225,7 @@ export default {
       font-family: PingFang SC, Helvetica Neue, Arial, sans-serif;
       line-height: 14px;
       text-align: center;
-      background-color: #ee0a24;
+      background-color: #FC4339;
       border: 1px solid #fff;
       -webkit-transform: translate(50%, -50%);
       transform: translate(50%, -50%);
@@ -264,7 +264,7 @@ export default {
     overflow: hidden;
     float: left;
     margin-top: -10px;
-    background: #dbdbdb;
+    background: #EFEFEF;
     width: 335px;
     height: 2px;
   }

@@ -70,7 +70,7 @@ export default {
         lng: 120.665673,
         lat: 27.979261
       },
-      zoom: 5,
+      zoom: 6,
       BMap: '',
       map: '',
       markers: [],
@@ -136,11 +136,15 @@ export default {
       })
       if (res.code === 200) {
         this.markers = []
-        res.data.forEach(item => {
-          if (item.location !== null) {
-            this.markers.push({ location: item.location, lng: item.location.split(',')[0], lat: item.location.split(',')[1], showFlag: false, companyName: item.companyName, transformerRoom: item.transformerRoom })
-          }
-        })
+        if (res.data.length !== 0) {
+          this.location.lng = res.data[0].location.split(',')[0]
+          this.location.lat = res.data[0].location.split(',')[1]
+          res.data.forEach(item => {
+            if (item.location !== null) {
+              this.markers.push({ location: item.location, lng: item.location.split(',')[0], lat: item.location.split(',')[1], showFlag: false, companyName: item.companyName, transformerRoom: item.transformerRoom })
+            }
+          })
+        }
         console.log(this.markers)
       } else {
         this.$toast({
@@ -268,7 +272,7 @@ export default {
   font-weight: 400;
   color: rgba(47, 47, 47, 1);
   p{
-    max-width: 150px;
+    max-width: 140px;
   }
 }
 .marker_b {

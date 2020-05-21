@@ -278,6 +278,9 @@ export default {
 }
 </script>
 <style scoped lang="less">
+/deep/.van-grid-item__content{
+  background-color: #FAFAFA;
+}
 .header {
   font-size: 16px;
   color: #191919;

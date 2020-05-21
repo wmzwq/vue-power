@@ -546,7 +546,7 @@ export default {
   border-radius: 4px;
   border: 1px solid rgba(99, 113, 129, 1);
   margin-top: 6px;
-  margin-right: 26px;
+  margin-right: 19px;
   opacity: 0.5;
   font-size: 12px;
   font-weight: 400;
@@ -606,9 +606,9 @@ export default {
   margin: 15px 20px 0;
 }
 .statistics_a {
-  display: inline-block;
+  float: left;
   position: relative;
-  margin-left: 40px;
+  margin-left: 80px;
   margin-top: 16px;
 }
 .statistics_y {
@@ -632,16 +632,16 @@ export default {
   left: 13px;
 }
 .statistics_b {
-  display: inline-block;
+  float: left;
   position: relative;
-  margin-left: 58px;
+  margin-left: 60px;
   margin-top: 16px;
 }
 .statistics_c {
   background: rgba(238, 166, 124, 1);
 }
 #statistics{
-  width: 330px;height:240px;margin-top:-20px
+  width: 330px;height:240px;
 }
 #main{
   width: 150px;height:150px;

@@ -387,7 +387,6 @@ textarea {
 }
 .pic {
   width: 375px;
-  background: rgba(255, 255, 255, 1);
   margin: 0 20px;
 }
 .mainWidth1 {

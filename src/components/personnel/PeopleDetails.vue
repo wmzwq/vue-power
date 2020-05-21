@@ -39,6 +39,7 @@
     <div class="footer">
        <viewer :images="images">
        <img v-for="src in images" :src="src" :key="src">
+       <div :class="['textStyle',{'hide':flag}]">暂无近期照片</div>
     </viewer>
     </div>
   </div>
@@ -49,6 +50,7 @@ export default {
   components: {},
   data () {
     return {
+      flag: true,
       name: '',
       group: '',
       time: '',
@@ -98,6 +100,8 @@ export default {
           var FilePath = 'http://122.228.89.215:8899' + res.data[0].F_FilePath.slice(index)
           this.images.push(FilePath)
         //   this.base64 = 'data:image/png;base64,' + res.data[0].F_PictureData
+        } else {
+          this.flag = false
         }
       } else {
         this.$toast({
@@ -174,9 +178,17 @@ input {
   width: 335px;
   height: 120px;
   background: rgba(226, 226, 226, 1);
+  overflow: hidden;
   img{
       width: 100%;
       height: 100%;
   }
+}
+.hide{
+  display: none;
+}
+.textStyle{
+  text-align: center;
+  margin-top: 45px;
 }
 </style>

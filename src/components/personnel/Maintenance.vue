@@ -1,20 +1,20 @@
 <template>
-  <div class="">
-      <van-nav-bar title="维护人员" left-arrow @click-left="onClickLeft">
+  <div class>
+    <van-nav-bar title="维护人员" left-arrow @click-left="onClickLeft">
       <template #right>
         <div class="nav_right">{{text}}</div>
       </template>
     </van-nav-bar>
-    <div class="header" v-for="(v, index) in list" :key="index"  @click="goDetails(v)">
+    <div class="header" v-for="(v, index) in list" :key="index" @click="goDetails(v)">
       <div class="header_l">
         <div class="fl">
-          <img src="../../assets/img/头像.png" alt="" />
+          <img src="../../assets/img/头像.png" alt />
         </div>
         <div class="fl">
           <div class="header_h">
             <p>{{v.F_RealName}}</p>
             <span>{{v.F_Account}}</span>
-            <div>
+            <div style="clear: both">
               <span>所属班组：</span>
               <span>{{v.F_Name}}</span>
             </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="line"></div>
       <div class="header_r" v-fb @click.stop="telPhone(v.F_Account)">
-        <img src="../../assets/img/电 话.png" alt="" />电话
+        <img src="../../assets/img/电 话.png" alt />电话
       </div>
     </div>
   </div>
@@ -60,9 +60,7 @@ export default {
     },
     async getList () {
       const { data: res } = await this.$http
-        .post(
-          'CustomerDataAPI/MaintenancePersonnel'
-        )
+        .post('CustomerDataAPI/MaintenancePersonnel')
         .catch(error => {
           console.log(error.message)
           this.$toast({
@@ -115,15 +113,22 @@ export default {
     .fl {
       .header_h {
         margin-left: 12px;
+        margin-top: 8px;
         p {
-          display: inline-block;
           font-size: 12px;
           color: rgba(47, 47, 47, 1);
           margin-right: 10px;
           margin-bottom: 10px;
+          max-width: 82px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          float: left;
+          overflow: hidden;
         }
         span {
           font-size: 10px;
+          float: left;
           color: rgba(137, 145, 155, 1);
         }
       }
@@ -149,7 +154,7 @@ export default {
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    font-size:12px;
+    font-size: 12px;
     img {
       float: left;
       margin: 6px -6px 0 9px;

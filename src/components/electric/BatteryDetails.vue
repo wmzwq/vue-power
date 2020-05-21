@@ -3,15 +3,18 @@
     <van-nav-bar title="电量详情" left-arrow @click-left="onClickLeft" />
     <div class="flex">
       <div>
-        <van-dropdown-menu>
+        <van-dropdown-menu class="custorm">
           <van-dropdown-item v-model="value" :options="option" @change="change" />
         </van-dropdown-menu>
       </div>
       <div>
-        <select v-model="time" class="select" @change="selectChange">
+         <van-dropdown-menu class="select">
+          <van-dropdown-item v-model="time" :options="option2" @change="change" />
+        </van-dropdown-menu>
+        <!-- <select v-model="time" class="select" @change="selectChange">
           <option value="month">月</option>
           <option value="day">日</option>
-        </select>
+        </select> -->
       </div>
     </div>
     <div >
@@ -50,7 +53,11 @@ export default {
       option: [],
       time: 'day',
       timetype: 1,
-      list: []
+      list: [],
+      option2: [
+        { value: 'day', text: '日' },
+        { value: 'month', text: '月' }
+      ]
     }
   },
   methods: {
@@ -112,6 +119,7 @@ export default {
   margin: 15px 15px 0 15px;
   font-size: 12px;
 }
+.custorm{
 /deep/.van-dropdown-menu__title {
   font-size: 12px;
   margin-right: 124px;
@@ -126,6 +134,22 @@ export default {
   font-weight: 400;
   color: rgba(47, 47, 47, 1);
 }
+/deep/.van-popup--top{
+  width: 260px;
+}
+}
+.select{
+  /deep/.van-dropdown-menu__title::after{
+    right: 10px;
+  }
+  /deep/.van-ellipsis{
+    margin-right: 28px;
+  }
+  /deep/.van-popup--top{
+    width: 65px;
+    left: 275px;
+}
+}
 .tableStyle {
   width: 335px;
   margin: auto;
@@ -139,12 +163,11 @@ td {
   width: 167px;
 }
 .select {
-  width: 60px;
-  height: 32px;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06),
-    0px 0px 1px 0px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
+  width:60px;
+  height:32px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.06),0px 0px 1px 0px rgba(0,0,0,0.08);
+  border-radius:4px;
   margin: 15px 15px 0 0;
 }
 </style>

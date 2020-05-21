@@ -12,8 +12,7 @@
         <div class="flex2">
           <div class="powerSum">
             <div class="summary">
-              <p class="summary_p">当前</p>
-              <p>负荷</p>
+              <p class="summary_p">当前负荷</p>
             </div>
             <div class="sum">
               {{now}}
@@ -22,16 +21,13 @@
           </div>
           <div class="powerSum">
             <div class="summary">
-              <p class="summary_p">负荷</p>
-              <p>比率</p>
+              <p class="summary_p">负荷比率</p>
             </div>
-            <div class="sum">
-             {{rate}}
-            </div>
+            <div class="sum">{{rate}}</div>
           </div>
           <div class="powerSum">
             <div class="summary">
-              <p class="summary_p  powerCurve_cen">日最高</p>
+              <p class="powerCurve_cen">日最高</p>
             </div>
             <div class="sum">
               {{max}}
@@ -40,7 +36,7 @@
           </div>
           <div class="powerSum">
             <div class="summary">
-              <p class="summary_p  powerCurve_cen">日均值</p>
+              <p class="powerCurve_cen">日均值</p>
             </div>
             <div class="sum">
               {{avg}}
@@ -158,7 +154,11 @@ export default {
           this.avg = res.data[0].avg.toFixed(2)
           this.max = res.data[0].max.toFixed(2)
           this.now = res.data[0].now.toFixed(2)
-          this.rate = res.data[0].rate.toFixed(2)
+          if (res.data[0].rate === 'NaN') {
+            this.rate = 0
+          } else {
+            this.rate = res.data[0].rate.toFixed(2)
+          }
         }
       } else {
         this.$toast({
@@ -526,7 +526,11 @@ export default {
   margin-left: 5px;
 }
 .summary_p {
-  padding-top: 6px;
+  width: 26px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .powerCurve_color {
   background: rgba(81, 165, 222, 1);

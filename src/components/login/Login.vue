@@ -84,6 +84,9 @@ export default {
   top: 50%;
   transform: translateY(-50%);
 }
+/deep/.van-field__error-message{
+  margin-top: 28px;
+}
 /deep/.van-field__body {
   position: absolute;
   align-items: center;
