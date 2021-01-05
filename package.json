@@ -13,7 +13,7 @@
     "@types/fastclick": "^1.0.28",
     "@types/qs": "^6.9.1",
     "awe-dnd": "^0.3.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "echarts": "^4.7.0",
     "fastclick": "^1.0.6",
